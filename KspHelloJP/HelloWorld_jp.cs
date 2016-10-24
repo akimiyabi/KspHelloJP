@@ -19,7 +19,7 @@ namespace KspHelloJP
         /// <summary>
         /// start
         /// </summary>
-        void start()
+        void Start()
         {
         }
 
@@ -28,14 +28,9 @@ namespace KspHelloJP
         /// </summary>
         void Update()
         {
-            if (canview == false)
+            if (canview == false || howmanytimes > 2)
             {
-                //表示済みのため何もしない
-                return;
-            }
-            if (howmanytimes > 2)
-            {
-                //表示回数に達したため、何もしない
+                //表示済み or 表示回数上限
                 return;
             }
 
@@ -45,8 +40,6 @@ namespace KspHelloJP
 
             canview = false;
             howmanytimes++;
-
-            return;
         }
 
         /// <summary>
@@ -70,8 +63,10 @@ namespace KspHelloJP
         /// <summary>
         /// start
         /// </summary>
-        void start()
+        void Start()
         {
+            if (!TestWindow.canview)
+                TestWindow.canview = true;
         }
 
         /// <summary>
@@ -79,15 +74,6 @@ namespace KspHelloJP
         /// </summary>
         void Update()
         {
-
-            if (TestWindow.canview == true)
-            {
-                //初期化済みのため、何もしない
-                return;
-            }
-
-            TestWindow.canview = true;
-
         }
 
         /// <summary>
